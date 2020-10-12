@@ -11,6 +11,9 @@ public class TicTacToe {
 		public static char turn;
 		public static char board;
 		// Create board with Empty Spaces
+		/**
+		 * @return board
+		 */
 		private char[] createBoard() {
 			char[] board = new char[10];
 				for (int i = 1; i < 10; i++) {
@@ -19,6 +22,9 @@ public class TicTacToe {
 					return board;
 				}
 		//choosing letter
+		/**
+		 * @return letter
+		 */
 		private static char chooseLetter() {
 			Scanner sc=new Scanner(System.in);
 			System.out.println("Enter the Letter");
@@ -53,6 +59,11 @@ public class TicTacToe {
 
 			}
 	        //checking if the location is free
+		/**
+		 * @param board
+		 * @param location
+		 * @return
+		 */
 		private static boolean isSpaceFree(char[] board, int location) {
 			return board[location] == ' ';
 			}
@@ -71,9 +82,6 @@ public class TicTacToe {
 				displayBoard(board);
 			}
 		//toss
-		/**
-		 * @return toss
-		 */
 		private static int toss() {
 			int toss=(int) (Math.floor(Math.random() * 10) % 2);
 			return toss;
@@ -95,6 +103,22 @@ public class TicTacToe {
 				makeMove(board,computer);
 			}
 		}
+		/**
+		 * @param board
+		 * @param toss
+		 * @return
+		 */
+		private static boolean isWinner(char[] board,int toss) {
+			return(board[1]==board[2]&&board[2]==board[3]||
+			   board[4]==board[5]&&board[5]==board[6]||
+			   board[7]==board[8]&&board[8]==board[9]||
+			   board[1]==board[4]&&board[4]==board[7]||
+			   board[2]==board[5]&&board[5]==board[8]||
+			   board[3]==board[6]&&board[6]==board[9]||
+			   board[1]==board[5]&&board[5]==board[9]||
+			   board[3]==board[5]&&board[5]==board[7]); 
+					
+		}
 		 public static void main(String[] args) {
 			System.out.println("Welcome to TicTacToe program");
 	        TicTacToe ticTacToe = new TicTacToe();
@@ -109,5 +133,6 @@ public class TicTacToe {
 			}
 			displayBoard(board);
 			makeMove(board,user);
+			isWinner(board,toss());
 		}
 		}
