@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.util.Arrays;
 public class TicTacToe {
 	//constants
-	//constants
 		private final static int TAIL = 0;
 		private final static int HEAD = 1;
 		//variables
@@ -13,7 +12,7 @@ public class TicTacToe {
 		public static char board;
 		// Create board with Empty Spaces
 		/**
-		 * @return
+		 * @return board
 		 */
 		private char[] createBoard() {
 			char[] board = new char[10];
@@ -24,7 +23,7 @@ public class TicTacToe {
 				}
 		//choosing letter
 		/**
-		 * @return
+		 * @return char
 		 */
 		private static char chooseLetter() {
 			Scanner sc=new Scanner(System.in);
@@ -32,6 +31,9 @@ public class TicTacToe {
 			return sc.next().charAt(0);
 		}
 		//displaying board
+		/**
+		 * @param board
+		 */
 		private static void displayBoard(char[] board) {
 			System.out.println(board[1]+" | "+board[2]+" | "+board[3]);
 			System.out.println("______________");
@@ -57,15 +59,14 @@ public class TicTacToe {
 
 			}
 	        //checking if the location is free
-		/**
-		 * @param board
-		 * @param location
-		 * @return
-		 */
 		private static boolean isSpaceFree(char[] board, int location) {
 			return board[location] == ' ';
 			}
 			//changing on board
+		/**
+		 * @param board
+		 * @param turn
+		 */
 		private static void makeMove(char[] board,char turn) {
 			if(turn==user) {
 				int location=moveLocation(board);
@@ -102,11 +103,6 @@ public class TicTacToe {
 			}
 		}
 		//checking winner
-		/**
-		 * @param board
-		 * @param toss
-		 * @return
-		 */
 		private static boolean isWinner(char[] board,int toss) {
 			return(board[1]==board[2]&&board[2]==board[3]||
 			   board[4]==board[5]&&board[5]==board[6]||
@@ -118,6 +114,11 @@ public class TicTacToe {
 			   board[3]==board[5]&&board[5]==board[7]); 
 		}
 		//i am playing in place of computer
+		/**
+		 * @param board
+		 * @param turn
+		 * @return
+		 */
 		private static int computerTurn(char[] board,char turn) {
 			int location= 0;
 			while (location == 0) {
@@ -151,6 +152,33 @@ public class TicTacToe {
 					location=8;
 				}
 				else if(board[8]==board[7]&&board[7]==computer||board[3]==board[6]&&board[6]==computer||board[1]==board[5]&&board[5]==computer||board[9] == ' ') {
+					location =9;
+				}
+				else if(board[5]==board[7]&&board[7]==user||board[2]==board[3]&&board[2]==user||board[5]==board[9]&&board[9]==user||board[1] == ' ') {
+					location=1;
+					}
+				else if(board[1]==board[3]&&board[1]==user||board[5]==board[8]&&board[8]==user||board[2] == ' '){
+					location=2;
+				}
+				else if(board[1]==board[2]&&board[1]==user||board[6]==board[9]&&board[9]==user||board[5]==board[7]&&board[7]==user||board[3] == ' ') {
+					location=3;
+				}
+				else if(board[5]==board[6]&&board[6]==user||board[7]==board[1]&&board[7]==user||board[4] == ' ') {
+					location =4;
+				}
+				else if(board[4]==board[6]&&board[6]==user||board[2]==board[8]&&board[8]==user||board[5] == ' '){
+					location=5;
+				}
+				else if(board[4]==board[5]&&board[5]==user||board[3]==board[9]&&board[9]==user||board[6] == ' '){
+					location =6;
+				}
+				else if(board[1]==board[4]&&board[1]==user||board[8]==board[9]&&board[9]==user||board[5]==board[3]&&board[3]==user||board[7] == ' ') {
+					location=7;
+				}
+				else if(board[2]==board[5]&&board[2]==user||board[9]==board[7]&&board[9]==user||board[8] == ' ') {
+					location=8;
+				}
+				else if(board[8]==board[7]&&board[7]==user||board[3]==board[6]&&board[6]==user||board[1]==board[5]&&board[5]==user||board[9] == ' ') {
 					location =9;
 				}
 				
