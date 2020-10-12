@@ -22,9 +22,6 @@ public class TicTacToe {
 					return board;
 				}
 		//choosing letter
-		/**
-		 * @return char
-		 */
 		private static char chooseLetter() {
 			Scanner sc=new Scanner(System.in);
 			System.out.println("Enter the Letter");
@@ -44,7 +41,6 @@ public class TicTacToe {
 		// Move to desired location
 		/**
 		 * @param board
-		 * @return
 		 */
 		private static int moveLocation(char[] board) {
 			Scanner sc = new Scanner(System.in);
@@ -114,11 +110,6 @@ public class TicTacToe {
 			   board[3]==board[5]&&board[5]==board[7]); 
 		}
 		//i am playing in place of computer
-		/**
-		 * @param board
-		 * @param turn
-		 * @return
-		 */
 		private static int computerTurn(char[] board,char turn) {
 			int location= 0;
 			while (location == 0) {
@@ -180,6 +171,19 @@ public class TicTacToe {
 				}
 				else if(board[8]==board[7]&&board[7]==user||board[3]==board[6]&&board[6]==user||board[1]==board[5]&&board[5]==user||board[9] == ' ') {
 					location =9;
+				}
+				//Occupy corners
+				else if(board[1]==' ') {                  
+					location=1;
+				}
+				else if(board[3]==' ') {
+					location=3;
+				}
+				else if(board[7]==' ') {
+					location=7;
+				}
+				else if(board[9]==' ') {
+					location=9;
 				}
 				
 			}
